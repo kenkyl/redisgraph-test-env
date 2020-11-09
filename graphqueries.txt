@@ -1,0 +1,9 @@
+# get all books that Kyle likes
+MATCH (r:Reader {name: 'Kyle'})
+
+# get average birth year of readers
+MATCH (r:Reader) WITH AVG(r.born) as average_age RETURN average_age
+
+# variable-length path match
+MATCH (sean:Reader {name:'Sean'})-[:knows*1..2]-(r) RETURN sean, r
+MATCH (sean:Reader {name:'Sean'})-[:knows*1..3]-(r) RETURN sean, r
